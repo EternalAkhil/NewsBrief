@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchNational } from '../api/query'
+import { fetchNational } from '../api/api.js'
 import { useState,useEffect } from 'react'
 import Newscard from '../components/Newscard'
 import defimg from '../assets/download.jpeg'

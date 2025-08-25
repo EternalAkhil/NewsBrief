@@ -1,7 +1,7 @@
 import React from 'react'
 import {FaSearch} from 'react-icons/fa'
 import { useState } from 'react'
-import { searchNews } from '../api/query'
+import { searchNews } from '../api/api.js'
 import Newscard from '../components/Newscard'
 import defimg from '../assets/download.jpeg'
 const Search = () => {
@@ -15,6 +15,7 @@ const Search = () => {
         setLoader(true)
         try{
             const res = await searchNews(search)
+            console.log(res.data)
             setResults(res.data.articles)
             setLoader(false)
 
