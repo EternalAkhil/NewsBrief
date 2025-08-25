@@ -34,12 +34,12 @@ app.get("/news/search", async (req, res) => {
     const twoDaysAgo = new Date(Date.now() - 2 * 24 * 60 * 60 * 1000)
         .toISOString()
         .split('T')[0];
- 
+    console.log(twoDaysAgo);
     try {
         const response = await axios.get(
-            `https://newsapi.org/v2/everything?q=${query}&from=${twoDaysAgo}&sortBy=publishedAt&apiKey=0fedb6bb29bd440a91d8e7b04139e894`
+            `https://newsapi.org/v2/everything?q=${query}&from=${twoDaysAgo}&sortBy=publishedAt&apiKey=${process.env.API}`
         );
-    
+        console.log(response.data);
         return res.status(201).json(response.data);
     } catch (error) {
         console.log(error);
@@ -50,7 +50,7 @@ app.get("/news/search", async (req, res) => {
 })
 app.get("/news/national",async(req,res)=>{
     try {
-        const response = await axios.get(`https://newsapi.org/v2/everything?q=india&language=en&apiKey=0fedb6bb29bd440a91d8e7b04139e894`)
+        const response = await axios.get(`https://newsapi.org/v2/everything?q=india&language=en&apiKey=${process.env.API}`)
         return res.status(201).json(response.data)
 }catch{
     return res.status(404).json({msg:error.message})

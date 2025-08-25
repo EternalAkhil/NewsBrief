@@ -27,7 +27,7 @@ export const searchNews = async (query) => {
 
 export const fetchNational = async () => {
     try {
-        const res = await api.get("national")
+        const res = await api.get("/national")
         return res;
 
     }
